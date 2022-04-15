@@ -35,6 +35,17 @@ public class Category {
         }
     }
 
+    public Category(UUID id, String name, String description, Boolean isActive) {
+        this.setId(id);
+        this.setName(name);
+        this.setDescription(description);
+        if (isActive) {
+            this.active();
+        } else {
+            this.deactivate();
+        }
+    }
+
     public UUID getId() {
         return id;
     }
@@ -80,7 +91,7 @@ public class Category {
     public void update(String name, String description, Boolean isActive) {
         this.setName(name);
         this.setDescription(description);
-        if (isActive != null && isActive != this.isActive) {
+        if (isActive != null && !isActive.equals(this.isActive)) {
             if (isActive) {
                 this.active();
             } else {
